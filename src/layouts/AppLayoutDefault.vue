@@ -13,7 +13,7 @@ const isNeedButtonBack = computed(() => {
 
 <template>
 	<div class="w-screen h-screen p-4 bg_image flex flex-col justify-between">
-		<main class="mb-4">
+		<main class="mb-4 h-full">
 			<slot />
 		</main>
 		<footer class="flex gap-4 w-full items-end justify-between">
