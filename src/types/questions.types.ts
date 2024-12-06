@@ -1,3 +1,9 @@
+export interface QuestionResponse {
+	Question: string
+	Answer: string
+	Lang: string
+}
+
 export interface Question {
 	question: string
 	answers: Answer[]

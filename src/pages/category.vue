@@ -1,8 +1,31 @@
 <script setup lang="ts">
 import { questions } from '@/questions'
+import { QuestionResponse } from '@/types/questions.types'
+import { ref } from 'vue'
 import { useRoute } from 'vue-router'
 
 const route = useRoute()
+
+const answersData = ref<QuestionResponse[]>([])
+
+const pushToAnswers = (question: QuestionResponse) => {
+	const isExistsAnswer = answersData.value?.some(
+		answer => answer.Question === question.Question
+	)
+
+	if (!isExistsAnswer) {
+		answersData.value?.push(question)
+	} else {
+		answersData.value?.forEach(item =>
+			item.Question === question.Question ? question.Answer : item
+		)
+	}
+	console.log(answersData.value)
+}
+
+const handleSubmit = () => {
+	console.log(answersData.value)
+}
 </script>
 
 <template>
@@ -17,6 +40,13 @@ const route = useRoute()
 					<button
 						v-for="(answer, idx) in item.answers"
 						:key="idx"
+						@click="
+							pushToAnswers({
+								Question: item.question,
+								Answer: answer.name,
+								Lang: 'ru'
+							})
+						"
 						class="py-2 px-4 rounded-md min-w-40 font-semibold active:opacity-80 transition-opacity"
 						:style="{ backgroundColor: answer.color }"
 					>
@@ -27,6 +57,8 @@ const route = useRoute()
 		</div>
 		<div class="h-[10%]">
 			<button
+				type="submit"
+				@click="handleSubmit"
 				class="bg-sky-500 text-white text-xl py-2 px-4 rounded-md active:bg-sky-500/90 transition-colors"
 			>
 				Отправить
