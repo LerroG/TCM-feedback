@@ -17,8 +17,12 @@
 		<div class="mb-5">
 			Ваш отзыв поможет нам сделать ваш следующий визит ещё приятнее!
 		</div>
-		<button class="bg-indigo-800 text-white text-xl p-4 rounded-md">
-			Оставить отзыв
-		</button>
+		<RouterLink to="/categories">
+			<button
+				class="bg-indigo-800 text-white text-xl p-4 rounded-md active:bg-indigo-800/90 transition-colors"
+			>
+				Оставить отзыв
+			</button>
+		</RouterLink>
 	</div>
 </template>

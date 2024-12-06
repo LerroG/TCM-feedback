@@ -8,6 +8,17 @@ const routes = [
 		name: RouteNamesEnum.start,
 		component: () => import('@/pages/start.vue')
 		// meta: { titleKey: 'Feedback reports' }
+	},
+	{
+		path: '/categories',
+		name: RouteNamesEnum.categories,
+		component: () => import('@/pages/categories.vue')
+		// meta: { titleKey: 'Feedback reports' }
+	},
+	{
+		path: '/category/:categoryName',
+		name: RouteNamesEnum.category,
+		component: () => import('@/pages/category.vue')
 	}
 ]
 

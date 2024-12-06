@@ -1,22 +1,36 @@
+<script setup lang="ts">
+import { computed } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
+
+const route = useRoute()
+const router = useRouter()
+const isNeedButtonBack = computed(() => {
+	return (
+		route.path.startsWith('/categories') || route.path.startsWith('/category')
+	)
+})
+</script>
+
 <template>
-	<div class="w-screen h-screen p-6 bg_image">
+	<div class="w-screen h-screen p-4 bg_image flex flex-col justify-between">
 		<main class="mb-4">
 			<slot />
 		</main>
-		<footer class="flex gap-2 w-full justify-end">
-			<div class="w-14 h-8 rounded-sm border overflow-hidden">
-				<img
-					class="w-full h-full object-cover"
-					src="/flags/uzbekistan.svg"
-					alt="O'zbek"
-				/>
-			</div>
-			<div class="w-14 h-8 rounded-sm border overflow-hidden">
-				<img
-					class="w-full h-full object-cover"
-					src="/flags/russia.svg"
-					alt="O'zbek"
-				/>
+		<footer class="flex gap-4 w-full items-end justify-between">
+			<button
+				@click="router.back()"
+				v-if="isNeedButtonBack"
+				class="bg-indigo-800 text-white text-xl py-2 px-4 rounded-md active:bg-indigo-800/90 transition-colors"
+			>
+				НАЗАД
+			</button>
+			<div class="flex gap-4 w-full justify-end">
+				<div class="w-16 h-10 rounded-sm overflow-hidden">
+					<img class="w-full h-full" src="/flags/uzbekistan.svg" alt="O'zbek" />
+				</div>
+				<div class="w-16 h-10 rounded-sm overflow-hidden">
+					<img class="w-full h-full" src="/flags/russia.svg" alt="O'zbek" />
+				</div>
 			</div>
 		</footer>
 	</div>
