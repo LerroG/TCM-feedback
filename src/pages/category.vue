@@ -2,11 +2,15 @@
 import { questions } from '@/questions'
 import { QuestionResponse } from '@/types/questions.types'
 import { ref } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { useRoute, useRouter } from 'vue-router'
 
 const route = useRoute()
 const router = useRouter()
+const { locale, t } = useI18n()
 
+const url = window.SETTINGS.api
+const deviceName = window.SETTINGS.deviceName
 const answersData = ref<QuestionResponse[]>([])
 const selectedAnswers = ref<Record<string, string>>({})
 
@@ -23,7 +27,31 @@ const pushToAnswers = (question: QuestionResponse) => {
 }
 
 const handleSubmit = () => {
-	router.push('/thanks')
+	const data = answersData.value.map(answer => ({
+		DeviceName: deviceName,
+		Question: t(answer.Question),
+		Answer: t(answer.Answer),
+		Lang: answer.Lang
+	}))
+
+	const requests = data.map(item =>
+		fetch(url, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(item)
+		}).then(response => response.json())
+	)
+
+	Promise.all(requests)
+		.then(results => {
+			router.push('/thanks')
+			console.log('All responses:', results)
+		})
+		.catch(error => {
+			console.error('Error in one or more requests:', error)
+		})
 }
 </script>
 
@@ -47,7 +75,7 @@ const handleSubmit = () => {
 								pushToAnswers({
 									Question: item.question,
 									Answer: answer.name,
-									Lang: 'ru'
+									Lang: locale
 								})
 							"
 							class="py-2 px-4 rounded-md min-w-52 font-semibold active:opacity-80 transition-all"
