@@ -19,6 +19,11 @@ const routes = [
 		path: '/category/:categoryName',
 		name: RouteNamesEnum.category,
 		component: () => import('@/pages/category.vue')
+	},
+	{
+		path: '/thanks',
+		name: RouteNamesEnum.thanks,
+		component: () => import('@/pages/thanks.vue')
 	}
 ]
 

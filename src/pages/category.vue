@@ -2,29 +2,28 @@
 import { questions } from '@/questions'
 import { QuestionResponse } from '@/types/questions.types'
 import { ref } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 
 const route = useRoute()
+const router = useRouter()
 
 const answersData = ref<QuestionResponse[]>([])
+const selectedAnswers = ref<Record<string, string>>({})
 
 const pushToAnswers = (question: QuestionResponse) => {
-	const isExistsAnswer = answersData.value?.some(
+	selectedAnswers.value[question.Question] = question.Answer
+	const existingAnswer = answersData.value.find(
 		answer => answer.Question === question.Question
 	)
-
-	if (!isExistsAnswer) {
-		answersData.value?.push(question)
+	if (existingAnswer) {
+		existingAnswer.Answer = question.Answer
 	} else {
-		answersData.value?.forEach(item =>
-			item.Question === question.Question ? question.Answer : item
-		)
+		answersData.value.push(question)
 	}
-	console.log(answersData.value)
 }
 
 const handleSubmit = () => {
-	console.log(answersData.value)
+	router.push('/thanks')
 }
 </script>
 
@@ -47,8 +46,11 @@ const handleSubmit = () => {
 								Lang: 'ru'
 							})
 						"
-						class="py-2 px-4 rounded-md min-w-40 font-semibold active:opacity-80 transition-opacity"
-						:style="{ backgroundColor: answer.color }"
+						class="py-2 px-4 rounded-md min-w-40 font-semibold active:opacity-80 transition-all"
+						:style="{
+							backgroundColor: answer.color,
+							scale: selectedAnswers[item.question] === answer.name ? 1.2 : 1
+						}"
 					>
 						{{ answer.name }}
 					</button>
@@ -59,16 +61,11 @@ const handleSubmit = () => {
 			<button
 				type="submit"
 				@click="handleSubmit"
-				class="bg-sky-500 text-white text-xl py-2 px-4 rounded-md active:bg-sky-500/90 transition-colors"
+				class="bg-sky-500 text-white text-xl py-2 px-4 rounded-md active:bg-sky-500/90 transition-colors disabled:bg-slate-300"
+				:disabled="answersData.length < questions[route.params.categoryName as string].length"
 			>
 				Отправить
 			</button>
 		</div>
 	</div>
 </template>
-
-<!-- <style scoped>
-.button_opacity:active {
-	@apply opacity-90;
-}
-</style> -->

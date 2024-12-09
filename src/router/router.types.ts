@@ -12,5 +12,6 @@ declare module 'vue-router' {
 export enum RouteNamesEnum {
 	start = 'start',
 	categories = 'categories',
-	category = 'category'
+	category = 'category',
+	thanks = 'thanks'
 }

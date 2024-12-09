@@ -24,12 +24,23 @@ const isNeedButtonBack = computed(() => {
 			>
 				НАЗАД
 			</button>
-			<div class="flex gap-4 w-full justify-end">
+			<div class="flex gap-2 w-full justify-end items-center">
 				<div class="w-16 h-10 rounded-sm overflow-hidden">
-					<img class="w-full h-full" src="/flags/uzbekistan.svg" alt="O'zbek" />
+					<img class="w-full h-full" src="/flags/usa.svg" alt="USA Flag" />
 				</div>
 				<div class="w-16 h-10 rounded-sm overflow-hidden">
-					<img class="w-full h-full" src="/flags/russia.svg" alt="O'zbek" />
+					<img
+						class="w-full h-full"
+						src="/flags/russia.svg"
+						alt="Russia Flag"
+					/>
+				</div>
+				<div class="w-16 h-10 rounded-sm overflow-hidden">
+					<img
+						class="w-full h-full"
+						src="/flags/uzbekistan.svg"
+						alt="Uzbek Flag"
+					/>
 				</div>
 			</div>
 		</footer>
