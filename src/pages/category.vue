@@ -29,31 +29,36 @@ const handleSubmit = () => {
 
 <template>
 	<div class="font-bold text-center h-full">
-		<div class="flex justify-center items-center gap-4 h-[90%]">
-			<div
-				v-for="(item, idx) in questions[route.params.categoryName as string]"
-				:key="idx"
-			>
-				<div class="text-lg mb-2">{{ idx + 1 }}. {{ item.question }}</div>
-				<div class="flex flex-col gap-2 items-center">
-					<button
-						v-for="(answer, idx) in item.answers"
-						:key="idx"
-						@click="
-							pushToAnswers({
-								Question: item.question,
-								Answer: answer.name,
-								Lang: 'ru'
-							})
-						"
-						class="py-2 px-4 rounded-md min-w-40 font-semibold active:opacity-80 transition-all"
-						:style="{
-							backgroundColor: answer.color,
-							scale: selectedAnswers[item.question] === answer.name ? 1.2 : 1
-						}"
-					>
-						{{ answer.name }}
-					</button>
+		<div class="flex items-center justify-center w-full h-[90%]">
+			<div class="flex justify-center items-start gap-4">
+				<div
+					:class="{'w-1/2': questions[route.params.categoryName as string].length > 1}"
+					v-for="(item, idx) in questions[route.params.categoryName as string]"
+					:key="idx"
+				>
+					<div class="text-lg mb-4">
+						{{ idx + 1 }}. {{ $t(`${item.question}`) }}
+					</div>
+					<div class="flex flex-col gap-2 items-center">
+						<button
+							v-for="(answer, idx) in item.answers"
+							:key="idx"
+							@click="
+								pushToAnswers({
+									Question: item.question,
+									Answer: answer.name,
+									Lang: 'ru'
+								})
+							"
+							class="py-2 px-4 rounded-md min-w-52 font-semibold active:opacity-80 transition-all"
+							:style="{
+								backgroundColor: answer.color,
+								scale: selectedAnswers[item.question] === answer.name ? 1.2 : 1
+							}"
+						>
+							{{ $t(`${answer.name}`) }}
+						</button>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -64,7 +69,7 @@ const handleSubmit = () => {
 				class="bg-sky-500 text-white text-xl py-2 px-4 rounded-md active:bg-sky-500/90 transition-colors disabled:bg-slate-300"
 				:disabled="answersData.length < questions[route.params.categoryName as string].length"
 			>
-				Отправить
+				{{ $t('Send') }}
 			</button>
 		</div>
 	</div>

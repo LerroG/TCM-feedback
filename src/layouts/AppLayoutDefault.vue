@@ -1,9 +1,20 @@
 <script setup lang="ts">
+import { loadLocaleMessages } from '@/lib/i18n'
 import { computed } from 'vue'
+import { useI18n } from 'vue-i18n'
 import { useRoute, useRouter } from 'vue-router'
 
+const { locale } = useI18n()
 const route = useRoute()
 const router = useRouter()
+
+const changeLanguage = async (lang: string) => {
+	if (locale.value !== lang) {
+		await loadLocaleMessages(lang)
+		locale.value = lang
+	}
+}
+
 const isNeedButtonBack = computed(() => {
 	return (
 		route.path.startsWith('/categories') || route.path.startsWith('/category')
@@ -22,26 +33,35 @@ const isNeedButtonBack = computed(() => {
 				v-if="isNeedButtonBack"
 				class="bg-indigo-800 text-white text-xl py-2 px-4 rounded-md active:bg-indigo-800/90 transition-colors"
 			>
-				НАЗАД
+				{{ $t('BACK') }}
 			</button>
 			<div class="flex gap-2 w-full justify-end items-center">
-				<div class="w-16 h-10 rounded-sm overflow-hidden">
+				<button
+					@click="changeLanguage('en')"
+					class="w-16 h-10 rounded-sm overflow-hidden"
+				>
 					<img class="w-full h-full" src="/flags/usa.svg" alt="USA Flag" />
-				</div>
-				<div class="w-16 h-10 rounded-sm overflow-hidden">
+				</button>
+				<button
+					@click="changeLanguage('ru')"
+					class="w-16 h-10 rounded-sm overflow-hidden"
+				>
 					<img
 						class="w-full h-full"
 						src="/flags/russia.svg"
 						alt="Russia Flag"
 					/>
-				</div>
-				<div class="w-16 h-10 rounded-sm overflow-hidden">
+				</button>
+				<button
+					@click="changeLanguage('uz')"
+					class="w-16 h-10 rounded-sm overflow-hidden"
+				>
 					<img
 						class="w-full h-full"
 						src="/flags/uzbekistan.svg"
 						alt="Uzbek Flag"
 					/>
-				</div>
+				</button>
 			</div>
 		</footer>
 	</div>

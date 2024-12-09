@@ -3,23 +3,23 @@ import { Questions } from '@/types/questions.types'
 export const questions: Questions = {
 	quality: [
 		{
-			question: 'Question Quality of service',
+			question: 'Question Service Quality',
 			answers: [
-				{ name: 'Great', color: '#4CAF50' },
-				{ name: 'Fine', color: '#FFEB3B' },
-				{ name: 'Satisfactorily', color: '#FF9800' },
-				{ name: 'Badly', color: '#F44336' }
+				{ name: 'Excellent', color: '#4CAF50' },
+				{ name: 'Good', color: '#FFEB3B' },
+				{ name: 'Satisfactory', color: '#FF9800' },
+				{ name: 'Poor', color: '#F44336' }
 			]
 		}
 	],
-	purity: [
+	cleanliness: [
 		{
-			question: 'Question Purity',
+			question: 'Question Cleanliness',
 			answers: [
-				{ name: 'Great', color: '#4CAF50' },
-				{ name: 'Fine', color: '#FFEB3B' },
-				{ name: 'Satisfactorily', color: '#FF9800' },
-				{ name: 'Badly', color: '#F44336' }
+				{ name: 'Excellent', color: '#4CAF50' },
+				{ name: 'Good', color: '#FFEB3B' },
+				{ name: 'Satisfactory', color: '#FF9800' },
+				{ name: 'Poor', color: '#F44336' }
 			]
 		}
 	],
@@ -45,10 +45,10 @@ export const questions: Questions = {
 		{
 			question: 'Question Comfort (smell)',
 			answers: [
-				{ name: 'Great', color: '#4CAF50' },
-				{ name: 'Fine', color: '#FFEB3B' },
-				{ name: 'Satisfactorily', color: '#FF9800' },
-				{ name: 'Badly', color: '#F44336' }
+				{ name: 'Excellent', color: '#4CAF50' },
+				{ name: 'Good', color: '#FFEB3B' },
+				{ name: 'Satisfactory', color: '#FF9800' },
+				{ name: 'Poor', color: '#F44336' }
 			]
 		}
 	],
@@ -56,10 +56,10 @@ export const questions: Questions = {
 		{
 			question: 'Question Security',
 			answers: [
-				{ name: 'Very pleased', color: '#4CAF50' },
-				{ name: 'Pleased', color: '#FFEB3B' },
-				{ name: 'Satisfactorily', color: '#FF9800' },
-				{ name: 'Dissatisfied', color: '#F44336' }
+				{ name: 'Very satisfied', color: '#4CAF50' },
+				{ name: 'Satisfied', color: '#FFEB3B' },
+				{ name: 'Satisfactory', color: '#FF9800' },
+				{ name: 'Not satisfied', color: '#F44336' }
 			]
 		}
 	],
@@ -67,10 +67,10 @@ export const questions: Questions = {
 		{
 			question: 'Question Restaurants 1',
 			answers: [
-				{ name: 'Very pleased', color: '#4CAF50' },
-				{ name: 'Pleased', color: '#FFEB3B' },
-				{ name: 'Satisfactorily', color: '#FF9800' },
-				{ name: 'Dissatisfied', color: '#F44336' }
+				{ name: 'Very satisfied', color: '#4CAF50' },
+				{ name: 'Satisfied', color: '#FFEB3B' },
+				{ name: 'Satisfactory', color: '#FF9800' },
+				{ name: 'Not satisfied', color: '#F44336' }
 			]
 		},
 		{
@@ -89,31 +89,31 @@ export const questions: Questions = {
 				{ name: 'Very comfortable', color: '#4CAF50' },
 				{ name: 'Comfortable', color: '#FFEB3B' },
 				{ name: 'Acceptable', color: '#FF9800' },
-				{ name: 'Not comfortable', color: '#F44336' }
+				{ name: 'Uncomfortable', color: '#F44336' }
 			]
 		},
 		{
 			question: 'Question Music 2',
 			answers: [
-				{ name: 'Great', color: '#4CAF50' },
-				{ name: 'Fine', color: '#FFEB3B' },
-				{ name: 'Satisfactorily', color: '#FF9800' },
-				{ name: 'Badly', color: '#F44336' }
+				{ name: 'Excellent', color: '#4CAF50' },
+				{ name: 'Good', color: '#FFEB3B' },
+				{ name: 'Satisfactory', color: '#FF9800' },
+				{ name: 'Poor', color: '#F44336' }
 			]
 		}
 	],
 	'general-impressions': [
 		{
-			question: 'Question General impressions of the SEC 1',
+			question: 'Question Overall Impression of the Mall 1',
 			answers: [
-				{ name: 'Great', color: '#4CAF50' },
-				{ name: 'Fine', color: '#FFEB3B' },
-				{ name: 'Satisfactorily', color: '#FF9800' },
-				{ name: 'Badly', color: '#F44336' }
+				{ name: 'Excellent', color: '#4CAF50' },
+				{ name: 'Good', color: '#FFEB3B' },
+				{ name: 'Satisfactory', color: '#FF9800' },
+				{ name: 'Poor', color: '#F44336' }
 			]
 		},
 		{
-			question: 'Question General impressions of the SEC 2',
+			question: 'Question Overall Impression of the Mall 2',
 			answers: [
 				{ name: 'Yes', color: '#4CAF50' },
 				{ name: 'Partially', color: '#FFEB3B' },
@@ -127,7 +127,7 @@ export const questions: Questions = {
 			answers: [
 				{ name: 'Very convenient', color: '#4CAF50' },
 				{ name: 'Convenient', color: '#FFEB3B' },
-				{ name: 'Satisfactorily', color: '#FF9800' },
+				{ name: 'Satisfactory', color: '#FF9800' },
 				{ name: 'Inconvenient', color: '#F44336' }
 			]
 		},
@@ -146,8 +146,8 @@ export const questions: Questions = {
 			answers: [
 				{ name: 'Very comfortable', color: '#4CAF50' },
 				{ name: 'Comfortable', color: '#FFEB3B' },
-				{ name: 'Acceptable', color: '#FF9800' },
-				{ name: 'Not comfortable', color: '#F44336' }
+				{ name: 'Satisfactory', color: '#FF9800' },
+				{ name: 'Uncomfortable', color: '#F44336' }
 			]
 		}
 	],
@@ -155,16 +155,16 @@ export const questions: Questions = {
 		{
 			question: 'Question Navigation',
 			answers: [
-				{ name: 'Great', color: '#4CAF50' },
-				{ name: 'Fine', color: '#FFEB3B' },
-				{ name: 'Satisfactorily', color: '#FF9800' },
-				{ name: 'Badly', color: '#F44336' }
+				{ name: 'Excellent', color: '#4CAF50' },
+				{ name: 'Good', color: '#FFEB3B' },
+				{ name: 'Satisfactory', color: '#FF9800' },
+				{ name: 'Poor', color: '#F44336' }
 			]
 		}
 	],
 	'recreation-areas': [
 		{
-			question: 'Question Recreation areas',
+			question: 'Question Rest Areas',
 			answers: [
 				{ name: 'Yes', color: '#4CAF50' },
 				{ name: 'Partially', color: '#FFEB3B' },
@@ -178,7 +178,7 @@ export const questions: Questions = {
 			answers: [
 				{ name: 'Very safe', color: '#4CAF50' },
 				{ name: 'Safe', color: '#FFEB3B' },
-				{ name: 'Satisfactorily', color: '#FF9800' },
+				{ name: 'Satisfactory', color: '#FF9800' },
 				{ name: 'Unsafe', color: '#F44336' }
 			]
 		}
@@ -189,7 +189,7 @@ export const questions: Questions = {
 			answers: [
 				{ name: 'Very convenient', color: '#4CAF50' },
 				{ name: 'Convenient', color: '#FFEB3B' },
-				{ name: 'Satisfactorily', color: '#FF9800' },
+				{ name: 'Satisfactory', color: '#FF9800' },
 				{ name: 'Inconvenient', color: '#F44336' }
 			]
 		}
@@ -200,8 +200,8 @@ export const questions: Questions = {
 			answers: [
 				{ name: 'Very interesting', color: '#4CAF50' },
 				{ name: 'Interesting', color: '#FFEB3B' },
-				{ name: 'Satisfactorily', color: '#FF9800' },
-				{ name: 'Uninteresting', color: '#F44336' }
+				{ name: 'Satisfactory', color: '#FF9800' },
+				{ name: 'Not interesting', color: '#F44336' }
 			]
 		},
 		{
