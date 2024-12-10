@@ -121,22 +121,22 @@ const handleSubmit = () => {
 	display: flex;
 	justify-content: center;
 	align-items: flex-start;
-	gap: 1rem;
 }
 
 .half_width {
 	width: 50%;
+	padding-left: 0.5rem;
+	padding-right: 0.5rem;
 }
 
 .question {
-	font-size: 1.125rem;
+	font-size: 1.6rem;
 	margin-bottom: 1rem;
 }
 
 .answers_container {
 	display: flex;
 	flex-direction: column;
-	gap: 0.5rem;
 	align-items: center;
 }
 
@@ -149,6 +149,11 @@ const handleSubmit = () => {
 	min-width: 13rem;
 	font-weight: 600;
 	transition: all 0.3s ease;
+	font-size: 1.4rem;
+	margin-bottom: 1rem;
+}
+.answer_button:last-child {
+	margin-bottom: 0;
 }
 
 .answer_button:active {
@@ -162,11 +167,11 @@ const handleSubmit = () => {
 .submit_button {
 	background-color: #0ea5e9;
 	color: white;
-	font-size: 1.25rem;
-	padding-top: 0.5rem;
-	padding-bottom: 0.5rem;
-	padding-left: 1rem;
-	padding-right: 1rem;
+	font-size: 1.5rem;
+	padding-top: 0.8rem;
+	padding-bottom: 0.8rem;
+	padding-left: 1.5rem;
+	padding-right: 1.5rem;
 	border-radius: 0.375rem;
 	transition: background-color 0.3s ease;
 }

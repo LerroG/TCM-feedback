@@ -42,13 +42,13 @@ onUnmounted(() => {
 }
 
 .thank_you {
-	font-size: 1.5rem;
+	font-size: 3rem;
 	margin-bottom: 1.5rem;
 }
 
 .we_sincerely {
 	text-align: center;
-	font-size: 1.125rem;
+	font-size: 1.5rem;
 	padding-left: 1rem;
 	padding-right: 1rem;
 	margin-bottom: 1rem;
@@ -57,11 +57,11 @@ onUnmounted(() => {
 .main_page_button {
 	background-color: #3730a3;
 	color: white;
-	font-size: 1.125rem;
-	padding-top: 0.5rem;
-	padding-bottom: 0.5rem;
-	padding-left: 1rem;
-	padding-right: 1rem;
+	font-size: 1.5rem;
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+	padding-left: 2rem;
+	padding-right: 2rem;
 	border-radius: 0.375rem;
 	transition: background-color 0.3s;
 }

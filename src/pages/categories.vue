@@ -27,32 +27,36 @@ const categoryNames = [
 		<RouterLink
 			v-for="route in categoryNames"
 			:key="route.link"
+			class="category_button"
 			:to="`/category/${route.link}`"
 		>
-			<button class="category_button">
-				{{ $t(`${route.name}`) }}
-			</button>
+			{{ $t(`${route.name}`) }}
 		</RouterLink>
 	</div>
 </template>
 
 <style scoped>
 .categories_container {
-	display: grid;
-	grid-template-columns: repeat(4, 1fr);
-	gap: 0.5rem;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-wrap: wrap;
 }
 
 .category_button {
-	width: 100%;
-	height: 6rem;
+	flex: 1 1 calc(25% - 2rem);
+	margin: 0.5rem;
+	height: calc(25% - 2rem);
 	background-color: #3730a3;
 	color: white;
-	font-size: 1.125rem;
+	font-size: 1.8rem;
 	padding: 0.5rem;
+	display: flex;
+	text-align: center;
+	justify-content: center;
+	align-items: center;
 	border-radius: 0.375rem;
 	transition: background-color 0.3s ease;
-	display: block;
 }
 .category_button:active {
 	background-color: rgba(55, 48, 163, 0.9);

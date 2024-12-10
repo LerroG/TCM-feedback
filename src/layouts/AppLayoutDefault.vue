@@ -67,26 +67,27 @@ const isNeedButtonBack = computed(() => {
 }
 
 .main_container {
-	margin-bottom: 1rem;
-	height: 100%;
+	height: 90%;
 }
 
 .footer_container {
 	display: flex;
-	gap: 1rem;
 	width: 100%;
+	height: 10%;
 	align-items: flex-end;
 	justify-content: space-between;
+	padding-left: 0.5rem;
+	padding-right: 0.5rem;
 }
 
 .button_back {
 	background-color: #3730a3;
 	color: white;
 	font-size: 1.25rem;
-	padding-top: 0.5rem;
-	padding-bottom: 0.5rem;
-	padding-left: 1rem;
-	padding-right: 1rem;
+	padding-top: 0.8rem;
+	padding-bottom: 0.8rem;
+	padding-left: 1.6rem;
+	padding-right: 1.6rem;
 	border-radius: 0.375rem;
 	transition: background-color 0.3s ease;
 }
@@ -97,21 +98,27 @@ const isNeedButtonBack = computed(() => {
 
 .lang_container {
 	display: flex;
-	gap: 0.5rem;
 	width: 100%;
 	justify-content: flex-end;
 	align-items: center;
 }
 
 .lang_button {
-	width: 4rem;
-	height: 2.5rem;
+	width: 6rem;
+	height: 3.5rem;
+	padding: 0;
+	border: none;
 	border-radius: 0.125rem;
+	align-items: center;
+	justify-content: center;
+	display: flex;
 	overflow: hidden;
+	margin-left: 0.8rem;
 }
 
 .lang_img {
 	width: 100%;
 	height: 100%;
+	object-fit: cover;
 }
 </style>
