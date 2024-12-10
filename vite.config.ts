@@ -7,6 +7,11 @@ import autoprefixer from 'autoprefixer'
 
 // https://vite.dev/config/
 export default defineConfig({
+	base: '/feedback',
+	build: {
+		outDir: 'dist',
+		assetsDir: 'assets'
+	},
 	css: {
 		postcss: {
 			plugins: [tailwind(), autoprefixer()]
