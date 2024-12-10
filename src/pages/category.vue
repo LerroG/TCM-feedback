@@ -44,30 +44,29 @@ const handleSubmit = () => {
 		}).then(response => response.json())
 	)
 
-	Promise.all(requests)
-		.then(() => {
-			router.push('/thanks')
-			// console.log('All responses:', results)
-		})
-		// .catch(error => {
-		// 	console.error('Error in one or more requests:', error)
-		// })
+	Promise.all(requests).then(() => {
+		router.push('/thanks')
+		// console.log('All responses:', results)
+	})
+	// .catch(error => {
+	// 	console.error('Error in one or more requests:', error)
+	// })
 }
 </script>
 
 <template>
-	<div class="font-bold text-center h-full">
-		<div class="flex items-center justify-center w-full h-[90%]">
-			<div class="flex justify-center items-start gap-4">
+	<div class="category_wrapper">
+		<div class="questions_wrapper">
+			<div class="questions_container">
 				<div
-					:class="{'w-1/2': questions[route.params.categoryName as string].length > 1}"
+					:class="{'half_width': questions[route.params.categoryName as string].length > 1}"
 					v-for="(item, idx) in questions[route.params.categoryName as string]"
 					:key="idx"
 				>
-					<div class="text-lg mb-4">
+					<div class="question">
 						{{ idx + 1 }}. {{ $t(`${item.question}`) }}
 					</div>
-					<div class="flex flex-col gap-2 items-center">
+					<div class="answers_container">
 						<button
 							v-for="(answer, idx) in item.answers"
 							:key="idx"
@@ -78,7 +77,7 @@ const handleSubmit = () => {
 									Lang: locale
 								})
 							"
-							class="py-2 px-4 rounded-md min-w-52 font-semibold active:opacity-80 transition-all"
+							class="answer_button"
 							:style="{
 								backgroundColor: answer.color,
 								scale: selectedAnswers[item.question] === answer.name ? 1.2 : 1
@@ -90,11 +89,11 @@ const handleSubmit = () => {
 				</div>
 			</div>
 		</div>
-		<div class="h-[10%]">
+		<div class="submit_container">
 			<button
 				type="submit"
 				@click="handleSubmit"
-				class="bg-sky-500 text-white text-xl py-2 px-4 rounded-md active:bg-sky-500/90 transition-colors disabled:bg-slate-300"
+				class="submit_button"
 				:disabled="answersData.length < questions[route.params.categoryName as string].length"
 			>
 				{{ $t('Send') }}
@@ -102,3 +101,81 @@ const handleSubmit = () => {
 		</div>
 	</div>
 </template>
+
+<style scoped>
+.category_wrapper {
+	font-weight: bold;
+	text-align: center;
+	height: 100%;
+}
+
+.questions_wrapper {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 90%;
+}
+
+.questions_container {
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	gap: 1rem;
+}
+
+.half_width {
+	width: 50%;
+}
+
+.question {
+	font-size: 1.125rem;
+	margin-bottom: 1rem;
+}
+
+.answers_container {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	align-items: center;
+}
+
+.answer_button {
+	padding-top: 0.5rem;
+	padding-bottom: 0.5rem;
+	padding-left: 1rem;
+	padding-right: 1rem;
+	border-radius: 0.375rem;
+	min-width: 13rem;
+	font-weight: 600;
+	transition: all 0.3s ease;
+}
+
+.answer_button:active {
+	opacity: 0.8;
+}
+
+.submit_container {
+	height: 10%;
+}
+
+.submit_button {
+	background-color: #0ea5e9;
+	color: white;
+	font-size: 1.25rem;
+	padding-top: 0.5rem;
+	padding-bottom: 0.5rem;
+	padding-left: 1rem;
+	padding-right: 1rem;
+	border-radius: 0.375rem;
+	transition: background-color 0.3s ease;
+}
+
+.submit_button:active {
+	background-color: rgba(14, 165, 233, 0.9);
+}
+
+.submit_button:disabled {
+	background-color: #cbd5e1;
+}
+</style>

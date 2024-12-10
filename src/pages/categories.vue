@@ -23,17 +23,38 @@ const categoryNames = [
 </script>
 
 <template>
-	<div class="grid grid-cols-4 gap-2">
+	<div class="categories_container">
 		<RouterLink
 			v-for="route in categoryNames"
 			:key="route.link"
 			:to="`/category/${route.link}`"
 		>
-			<button
-				class="w-full h-24 bg-indigo-800 text-white text-lg p-2 rounded-md active:bg-indigo-800/90 transition-colors block"
-			>
+			<button class="category_button">
 				{{ $t(`${route.name}`) }}
 			</button>
 		</RouterLink>
 	</div>
 </template>
+
+<style scoped>
+.categories_container {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 0.5rem;
+}
+
+.category_button {
+	width: 100%;
+	height: 6rem;
+	background-color: #3730a3;
+	color: white;
+	font-size: 1.125rem;
+	padding: 0.5rem;
+	border-radius: 0.375rem;
+	transition: background-color 0.3s ease;
+	display: block;
+}
+.category_button:active {
+	background-color: rgba(55, 48, 163, 0.9);
+}
+</style>
