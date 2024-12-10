@@ -45,13 +45,13 @@ const handleSubmit = () => {
 	)
 
 	Promise.all(requests)
-		.then(results => {
+		.then(() => {
 			router.push('/thanks')
-			console.log('All responses:', results)
+			// console.log('All responses:', results)
 		})
-		.catch(error => {
-			console.error('Error in one or more requests:', error)
-		})
+		// .catch(error => {
+		// 	console.error('Error in one or more requests:', error)
+		// })
 }
 </script>
 
