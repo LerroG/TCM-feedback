@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { mySetTimeout } from '@/lib/customTimeout'
 import { questions } from '@/questions'
 import { QuestionResponse } from '@/types/questions.types'
 import { onMounted, onUnmounted, ref } from 'vue'
@@ -9,7 +10,7 @@ const route = useRoute()
 const router = useRouter()
 const { locale, t } = useI18n()
 
-let timeoutId: ReturnType<typeof setTimeout>
+let cancelTimer: () => void
 const url = window.SETTINGS.api
 const deviceName = window.SETTINGS.deviceName
 const answersData = ref<QuestionResponse[]>([])
@@ -51,14 +52,15 @@ const handleSubmit = () => {
 }
 
 onMounted(() => {
-	timeoutId = setTimeout(() => {
+	cancelTimer = mySetTimeout(() => {
 		router.push('/')
 	}, 60000)
 })
 
 onUnmounted(() => {
-	if (timeoutId) {
-		clearTimeout(timeoutId)
+	// Отменяем таймер при размонтировании компонента
+	if (cancelTimer) {
+		cancelTimer()
 	}
 })
 </script>
@@ -87,13 +89,15 @@ onUnmounted(() => {
 								})
 							"
 							class="answer_button"
-							:style="{
-								backgroundColor: answer.color,
-								transform:
-									selectedAnswers[item.question] === answer.name
-										? 'scale(1.2)'
-										: 'scale(1)'
-							}"
+							:class="[
+								'answer',
+								answer.color,
+								{
+									selected: selectedAnswers[item.question] === answer.name,
+									deselected: selectedAnswers[item.question] !== answer.name
+								}
+							]"
+							:style="{ backgroundColor: answer.color }"
 						>
 							{{ $t(`${answer.name}`) }}
 						</button>
@@ -174,6 +178,14 @@ onUnmounted(() => {
 
 .submit_container {
 	height: 10%;
+}
+
+.selected {
+	transform: scale(1.2);
+}
+
+.deselected {
+	transform: scale(1);
 }
 
 .submit_button {

@@ -1,19 +1,21 @@
 <script setup lang="ts">
+import { mySetTimeout } from '@/lib/customTimeout'
 import { onMounted, onUnmounted } from 'vue'
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
-let timeoutId: ReturnType<typeof setTimeout>
+let cancelTimer: () => void
 
 onMounted(() => {
-	timeoutId = setTimeout(() => {
+	cancelTimer = mySetTimeout(() => {
 		router.push('/')
 	}, 60000)
 })
 
 onUnmounted(() => {
-	if (timeoutId) {
-		clearTimeout(timeoutId)
+	// Отменяем таймер при размонтировании компонента
+	if (cancelTimer) {
+		cancelTimer()
 	}
 })
 
