@@ -57,7 +57,9 @@ onMounted(() => {
 })
 
 onUnmounted(() => {
-	clearTimeout(timeoutId)
+	if (timeoutId) {
+		clearTimeout(timeoutId)
+	}
 })
 </script>
 
@@ -87,7 +89,10 @@ onUnmounted(() => {
 							class="answer_button"
 							:style="{
 								backgroundColor: answer.color,
-								scale: selectedAnswers[item.question] === answer.name ? 1.2 : 1
+								transform:
+									selectedAnswers[item.question] === answer.name
+										? 'scale(1.2)'
+										: 'scale(1)'
 							}"
 						>
 							{{ $t(`${answer.name}`) }}

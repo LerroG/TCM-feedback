@@ -12,7 +12,9 @@ onMounted(() => {
 })
 
 onUnmounted(() => {
-	clearTimeout(timeoutId)
+	if (timeoutId) {
+		clearTimeout(timeoutId)
+	}
 })
 
 const categoryNames = [
