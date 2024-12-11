@@ -1,4 +1,20 @@
 <script setup lang="ts">
+import { onMounted, onUnmounted } from 'vue'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+let timeoutId: ReturnType<typeof setTimeout>
+
+onMounted(() => {
+	timeoutId = setTimeout(() => {
+		router.push('/')
+	}, 60000)
+})
+
+onUnmounted(() => {
+	clearTimeout(timeoutId)
+})
+
 const categoryNames = [
 	{ name: 'Service Quality', link: 'quality' },
 	{ name: 'Cleanliness', link: 'cleanliness' },

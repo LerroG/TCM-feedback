@@ -8,7 +8,7 @@ let timeoutId: ReturnType<typeof setTimeout>
 onMounted(() => {
 	timeoutId = setTimeout(() => {
 		router.push('/')
-	}, 20000)
+	}, 10000)
 })
 
 onUnmounted(() => {

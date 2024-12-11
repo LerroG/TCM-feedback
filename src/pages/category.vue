@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { questions } from '@/questions'
 import { QuestionResponse } from '@/types/questions.types'
-import { ref } from 'vue'
+import { onMounted, onUnmounted, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRoute, useRouter } from 'vue-router'
 
@@ -9,6 +9,7 @@ const route = useRoute()
 const router = useRouter()
 const { locale, t } = useI18n()
 
+let timeoutId: ReturnType<typeof setTimeout>
 const url = window.SETTINGS.api
 const deviceName = window.SETTINGS.deviceName
 const answersData = ref<QuestionResponse[]>([])
@@ -46,12 +47,18 @@ const handleSubmit = () => {
 
 	Promise.all(requests).then(() => {
 		router.push('/thanks')
-		// console.log('All responses:', results)
 	})
-	// .catch(error => {
-	// 	console.error('Error in one or more requests:', error)
-	// })
 }
+
+onMounted(() => {
+	timeoutId = setTimeout(() => {
+		router.push('/')
+	}, 60000)
+})
+
+onUnmounted(() => {
+	clearTimeout(timeoutId)
+})
 </script>
 
 <template>
