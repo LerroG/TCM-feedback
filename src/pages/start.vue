@@ -1,5 +1,6 @@
 <template>
 	<div class="container">
+		<img class="logo_img" src="/logo.png" alt="Logo" />
 		<div class="invite_text">{{ $t('We invite you to leave a review') }}!</div>
 		<div class="options_list">
 			<p class="option">{{ $t('Your opinion is very important to us') }}:</p>
@@ -19,11 +20,19 @@
 
 <style scoped>
 .container {
+	position: relative;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	font-weight: bold;
 	text-align: center;
+	height: 100%;
+}
+
+.logo_img {
+	position: absolute;
+	bottom: -85px;
+	left: 100px;
 }
 
 .invite_text {
