@@ -66,7 +66,7 @@ const categoryNames = [
 .category_button {
 	flex: 1 1 calc(25% - 2rem);
 	margin: 0.5rem;
-	height: calc(25% - 2rem);
+	min-height: calc(25% - 1rem);
 	background-color: #3730a3;
 	color: white;
 	font-size: 1.8rem;

@@ -24,6 +24,7 @@ const isNeedButtonBack = computed(() => {
 
 <template>
 	<div class="layout_container bg_image">
+		<img class="logo_img" src="/logo.png" alt="Logo" />
 		<main class="main_container">
 			<slot />
 		</main>
@@ -52,7 +53,7 @@ const isNeedButtonBack = computed(() => {
 
 <style scoped>
 .bg_image {
-	background-image: url('/bg_2.png');
+	background-image: url('/bg.png');
 	background-size: cover;
 	background-position: center;
 }
@@ -60,14 +61,18 @@ const isNeedButtonBack = computed(() => {
 .layout_container {
 	width: 100vw;
 	height: 100vh;
-	padding: 1rem;
+	padding: 1.5rem 2rem 1rem 2rem;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+	align-items: center;
 }
 
 .main_container {
-	height: 90%;
+	margin-bottom: 1rem;
+	height: 70%;
+	overflow-y: auto;
+	overflow-x: hidden;
 }
 
 .footer_container {
@@ -84,10 +89,7 @@ const isNeedButtonBack = computed(() => {
 	background-color: #3730a3;
 	color: white;
 	font-size: 1.25rem;
-	padding-top: 0.8rem;
-	padding-bottom: 0.8rem;
-	padding-left: 1.6rem;
-	padding-right: 1.6rem;
+	padding: 0.8rem 1.6rem;
 	border-radius: 0.375rem;
 	transition: background-color 0.3s ease;
 }
@@ -120,5 +122,10 @@ const isNeedButtonBack = computed(() => {
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
+}
+
+.logo_img {
+	margin-bottom: 0.5rem;
+	height: 15%;
 }
 </style>

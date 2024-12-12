@@ -1,6 +1,5 @@
 <template>
 	<div class="container">
-		<img class="logo_img" src="/logo.png" alt="Logo" />
 		<div class="invite_text">{{ $t('We invite you to leave a review') }}!</div>
 		<div class="options_list">
 			<p class="option">{{ $t('Your opinion is very important to us') }}:</p>
@@ -10,63 +9,55 @@
 			<div>- {{ $t('Convenient parking and infrastructure') }}</div>
 		</div>
 		<div class="feedback_help_us">{{ $t('Your feedback will help us') }}!</div>
-		<RouterLink to="/categories">
-			<button class="leave_feedback">
-				{{ $t('Leave feedback') }}
-			</button>
+		<RouterLink class="leave_feedback" to="/categories">
+			{{ $t('Leave feedback') }}
 		</RouterLink>
 	</div>
 </template>
 
 <style scoped>
 .container {
-	position: relative;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	font-weight: bold;
 	text-align: center;
-	height: 100%;
-}
-
-.logo_img {
-	position: absolute;
-	bottom: -85px;
-	left: 100px;
+	padding-top: 1rem;
+	/* height: 90%; */
 }
 
 .invite_text {
-	font-size: 2.3rem;
+	font-size: 2rem;
 	text-align: center;
-	margin-bottom: 2rem;
+	margin-bottom: 0.75rem;
 }
 
 .options_list {
 	display: flex;
 	flex-direction: column;
-	margin-bottom: 3rem;
-	font-size: 1.4rem;
+	margin-bottom: 1rem;
+	font-size: 1.5rem;
 }
 
 .option {
-	margin-bottom: 0.75rem;
+	margin-bottom: 0.5rem;
 }
 
 .feedback_help_us {
-	margin-bottom: 1.7rem;
-	font-size: 1.4rem;
+	margin-bottom: 2rem;
+	font-size: 1.5rem;
 }
 
 .leave_feedback {
-	background-color: #3730a3; /* bg-indigo-800 */
-	color: white; /* text-white */
-	font-size: 2rem; /* text-xl */
-	padding: 2rem; /* p-4 */
-	border-radius: 0.375rem; /* rounded-md */
-	transition: background-color 0.3s ease; /* transition-colors */
+	background-color: #3730a3;
+	color: white;
+	font-size: 2rem;
+	padding: 1rem 2rem;
+	border-radius: 0.375rem;
+	transition: background-color 0.2s ease;
 }
 
 .leave_feedback:active {
-	background-color: rgba(55, 48, 163, 0.9); /* active:bg-indigo-800/90 */
+	background-color: rgba(55, 48, 163, 0.9);
 }
 </style>

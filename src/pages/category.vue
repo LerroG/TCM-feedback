@@ -68,58 +68,56 @@ onUnmounted(() => {
 <template>
 	<div class="category_wrapper">
 		<div class="questions_wrapper">
-			<div class="questions_container">
-				<div
-					:class="{'half_width': questions[route.params.categoryName as string].length > 1}"
-					v-for="(item, idx) in questions[route.params.categoryName as string]"
-					:key="idx"
-				>
-					<div class="question">
-						{{ idx + 1 }}. {{ $t(`${item.question}`) }}
-					</div>
-					<div class="answers_container">
-						<button
-							v-for="(answer, idx) in item.answers"
-							:key="idx"
-							@click="
-								pushToAnswers({
-									Question: item.question,
-									Answer: answer.name,
-									Lang: locale
-								})
-							"
-							class="answer_button"
-							:class="[
-								'answer',
-								answer.color,
-								{
-									selected: selectedAnswers[item.question] === answer.name,
-									deselected: selectedAnswers[item.question] !== answer.name
-								}
-							]"
-							:style="{ backgroundColor: answer.color }"
-						>
-							{{ $t(`${answer.name}`) }}
-						</button>
-					</div>
+			<div
+				:class="{'half_width': questions[route.params.categoryName as string].length > 1}"
+				v-for="(item, idx) in questions[route.params.categoryName as string]"
+				:key="idx"
+			>
+				<div class="question">{{ idx + 1 }}. {{ $t(`${item.question}`) }}</div>
+				<div class="answers_container">
+					<button
+						v-for="(answer, idx) in item.answers"
+						:key="idx"
+						@click="
+							pushToAnswers({
+								Question: item.question,
+								Answer: answer.name,
+								Lang: locale
+							})
+						"
+						class="answer_button"
+						:class="[
+							'answer',
+							answer.color,
+							{
+								selected: selectedAnswers[item.question] === answer.name,
+								deselected: selectedAnswers[item.question] !== answer.name
+							}
+						]"
+						:style="{ backgroundColor: answer.color }"
+					>
+						{{ $t(`${answer.name}`) }}
+					</button>
 				</div>
 			</div>
 		</div>
-		<div class="submit_container">
-			<button
-				type="submit"
-				@click="handleSubmit"
-				class="submit_button"
-				:disabled="answersData.length < questions[route.params.categoryName as string].length"
-			>
-				{{ $t('Send') }}
-			</button>
-		</div>
+		<button
+			type="submit"
+			@click="handleSubmit"
+			class="submit_button"
+			:disabled="answersData.length < questions[route.params.categoryName as string].length"
+		>
+			{{ $t('Send') }}
+		</button>
 	</div>
 </template>
 
 <style scoped>
 .category_wrapper {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 	font-weight: bold;
 	text-align: center;
 	height: 100%;
@@ -127,19 +125,16 @@ onUnmounted(() => {
 
 .questions_wrapper {
 	display: flex;
-	align-items: center;
 	justify-content: center;
+	/* align-items: center; */
 	width: 100%;
-	height: 90%;
-}
-
-.questions_container {
-	display: flex;
-	justify-content: center;
-	align-items: flex-start;
+	margin-bottom: 2rem;
 }
 
 .half_width {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 	width: 50%;
 	padding-left: 0.5rem;
 	padding-right: 0.5rem;
@@ -157,12 +152,9 @@ onUnmounted(() => {
 }
 
 .answer_button {
-	padding-top: 0.5rem;
-	padding-bottom: 0.5rem;
-	padding-left: 1rem;
-	padding-right: 1rem;
+	padding: 0.5rem 1rem;
 	border-radius: 0.375rem;
-	min-width: 13rem;
+	min-width: 15rem;
 	font-weight: 600;
 	transition: all 0.3s ease;
 	font-size: 1.4rem;
@@ -174,10 +166,6 @@ onUnmounted(() => {
 
 .answer_button:active {
 	opacity: 0.8;
-}
-
-.submit_container {
-	height: 10%;
 }
 
 .selected {
