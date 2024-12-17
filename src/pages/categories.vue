@@ -33,7 +33,7 @@ const categoryNames = [
 	{ name: 'Navigation', link: 'navigation' },
 	{ name: 'Rest Areas', link: 'recreation-areas' },
 	{ name: 'Safety', link: 'safety' },
-	{ name: 'Mobile application', link: 'mobile-app' },
+	{ name: 'Website', link: 'mobile-app' },
 	{ name: 'Promotions and events', link: 'promotions' },
 	{
 		name: 'Accessibility for all categories of visitors',

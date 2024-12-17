@@ -185,12 +185,12 @@ export const questions: Questions = {
 	],
 	'mobile-app': [
 		{
-			question: 'Question Mobile application',
+			question: 'Question Website',
 			answers: [
-				{ name: 'Very convenient', color: '#4CAF50' },
-				{ name: 'Convenient', color: '#FFEB3B' },
-				{ name: 'Satisfactory', color: '#FF9800' },
-				{ name: 'Inconvenient', color: '#F44336' }
+				{ name: 'Very convenient Website', color: '#4CAF50' },
+				{ name: 'Convenient Website', color: '#FFEB3B' },
+				{ name: 'Satisfactory Website', color: '#FF9800' },
+				{ name: 'Inconvenient Website', color: '#F44336' }
 			]
 		}
 	],
