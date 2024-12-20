@@ -7,7 +7,7 @@ import autoprefixer from 'autoprefixer'
 
 // https://vite.dev/config/
 export default defineConfig({
-	base: '/feedback', // Путь для деплоя, если нужно
+	base: '/feedback2', // Путь для деплоя, если нужно
 	build: {
 		outDir: 'dist',
 		assetsDir: 'assets'
