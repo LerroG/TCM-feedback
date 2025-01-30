@@ -1,12 +1,8 @@
 <script setup lang="ts">
 import { loadLocaleMessages } from '@/lib/i18n'
-import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { useRoute, useRouter } from 'vue-router'
 
 const { locale } = useI18n()
-const route = useRoute()
-const router = useRouter()
 
 const changeLanguage = async (lang: string) => {
 	if (locale.value !== lang) {
