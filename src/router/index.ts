@@ -28,7 +28,7 @@ const routes = [
 ]
 
 const router = createRouter({
-	history: createWebHistory('/feedback2/'),
+	history: createWebHistory('/feedback/'),
 	routes
 })
 
