@@ -10,17 +10,6 @@ const routes = [
 		// meta: { titleKey: 'Feedback reports' }
 	},
 	{
-		path: '/categories',
-		name: RouteNamesEnum.categories,
-		component: () => import('@/pages/categories.vue')
-		// meta: { titleKey: 'Feedback reports' }
-	},
-	{
-		path: '/category/:categoryName',
-		name: RouteNamesEnum.category,
-		component: () => import('@/pages/category.vue')
-	},
-	{
 		path: '/thanks',
 		name: RouteNamesEnum.thanks,
 		component: () => import('@/pages/thanks.vue')
@@ -28,7 +17,7 @@ const routes = [
 ]
 
 const router = createRouter({
-	history: createWebHistory('/feedback/'),
+	history: createWebHistory(),
 	routes
 })
 

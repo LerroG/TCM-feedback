@@ -1,15 +1,19 @@
 <script setup lang="ts">
 import { mySetTimeout } from '@/lib/customTimeout'
 import { onMounted, onUnmounted } from 'vue'
-import { useRouter } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 
+const route = useRoute()
 const router = useRouter()
 
 let cancelTimer: () => void
 
 onMounted(() => {
 	cancelTimer = mySetTimeout(() => {
-		router.push('/')
+		router.push({
+			path: '/',
+			query: { DeviceId: route.query.DeviceId }
+		})
 	}, 5000)
 })
 
@@ -29,7 +33,15 @@ onUnmounted(() => {
 				$t('We sincerely thank you for taking the time to share your opinion')
 			}}
 		</p>
-		<button @click="router.push('/')" class="main_page_button">
+		<button
+			@click="
+				router.push({
+					path: '/',
+					query: { DeviceId: route.query.DeviceId }
+				})
+			"
+			class="main_page_button"
+		>
 			{{ $t('Main page') }}
 		</button>
 	</div>
@@ -60,8 +72,8 @@ onUnmounted(() => {
 }
 
 .main_page_button {
-	background-color: #3730a3;
-	color: white;
+	background-color: #004239;
+	color: #feca20;
 	font-size: 1.5rem;
 	padding-top: 1rem;
 	padding-bottom: 1rem;

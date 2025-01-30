@@ -15,36 +15,29 @@ const changeLanguage = async (lang: string) => {
 	}
 }
 
-const isNeedButtonBack = computed(() => {
-	return (
-		route.path.startsWith('/categories') || route.path.startsWith('/category')
-	)
-})
+// const isNeedButtonBack = computed(() => {
+// 	return (
+// 		route.path.startsWith('/categories') || route.path.startsWith('/category')
+// 	)
+// })
 </script>
 
 <template>
 	<div class="layout_container bg_image">
-		<img class="logo_img" src="/logo.png" alt="Logo" />
+		<div class="logo_container">
+			<img class="logo_img" src="/Logo-yhxx.svg" alt="Logo" />
+			<div class="logo_text">Mamuriy amaliyot markazi</div>
+		</div>
 		<main class="main_container">
 			<slot />
 		</main>
 		<footer class="footer_container">
-			<button
-				@click="router.back()"
-				v-if="isNeedButtonBack"
-				class="button_back"
-			>
-				{{ $t('BACK') }}
-			</button>
 			<div class="lang_container">
-				<button @click="changeLanguage('en')" class="lang_button">
-					<img class="lang_img" src="/flags/usa.svg" alt="USA Flag" />
+				<button @click="changeLanguage('uz')" class="lang_button">
+					<img class="lang_img" src="/flags/uzbekistan.svg" alt="Uzbek Flag" />
 				</button>
 				<button @click="changeLanguage('ru')" class="lang_button">
 					<img class="lang_img" src="/flags/russia.svg" alt="Russia Flag" />
-				</button>
-				<button @click="changeLanguage('uz')" class="lang_button">
-					<img class="lang_img" src="/flags/uzbekistan.svg" alt="Uzbek Flag" />
 				</button>
 			</div>
 		</footer>
@@ -52,13 +45,8 @@ const isNeedButtonBack = computed(() => {
 </template>
 
 <style scoped>
-.bg_image {
-	background-image: url('/bg.png');
-	background-size: cover;
-	background-position: center;
-}
-
 .layout_container {
+	background: #fff;
 	width: 100vw;
 	height: 100vh;
 	padding: 1.5rem 2rem 1rem 2rem;
@@ -79,29 +67,12 @@ const isNeedButtonBack = computed(() => {
 	display: flex;
 	width: 100%;
 	height: 10%;
-	align-items: flex-end;
-	justify-content: space-between;
-	padding-left: 0.5rem;
-	padding-right: 0.5rem;
-}
-
-.button_back {
-	background-color: #3730a3;
-	color: white;
-	font-size: 1.25rem;
-	padding: 0.8rem 1.6rem;
-	border-radius: 0.375rem;
-	transition: background-color 0.3s ease;
-}
-
-.button_back:active {
-	background-color: rgba(55, 48, 163, 0.9);
 }
 
 .lang_container {
 	display: flex;
 	width: 100%;
-	justify-content: flex-end;
+	justify-content: center;
 	align-items: center;
 }
 
@@ -109,8 +80,8 @@ const isNeedButtonBack = computed(() => {
 	width: 6rem;
 	height: 3.5rem;
 	padding: 0;
-	border: none;
-	border-radius: 0.125rem;
+	border: solid 1px #d6d6d6;
+	border-radius: 0.25rem;
 	align-items: center;
 	justify-content: center;
 	display: flex;
@@ -124,8 +95,21 @@ const isNeedButtonBack = computed(() => {
 	object-fit: cover;
 }
 
-.logo_img {
+.logo_container {
+	display: flex;
+	align-items: end;
 	margin-bottom: 0.5rem;
 	height: 15%;
+}
+
+.logo_img {
+	display: flex;
+	height: 100%;
+	margin-right: 1.5rem;
+}
+
+.logo_text {
+	font-size: 2.5rem;
+	font-weight: 700;
 }
 </style>
