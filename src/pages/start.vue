@@ -9,7 +9,7 @@ const route = useRoute()
 const router = useRouter()
 
 const question = ref<FeedbackQuestion>()
-const selectedAnswer = ref()
+// const selectedAnswer = ref()
 const deviceId = ref(Number(route.query.DeviceId))
 const emojisNames = ['excellent_smile.jpg', 'normal_smile.jpg', 'bad_smile.jpg']
 
@@ -41,16 +41,17 @@ const fetchFeedbackQuestion = async (): Promise<FeedbackQuestion | null> => {
 	}
 }
 
-const pushToAnswer = (answer: { QuestionId: number; AnswerId: number }) => {
-	selectedAnswer.value = {
+const pushToAnswer = async (answer: {
+	QuestionId: number
+	AnswerId: number
+}) => {
+	const bodyData = {
 		DeviceId: deviceId.value,
 		QuestionId: answer.QuestionId,
 		AnswerId: answer.AnswerId,
 		Lang: locale.value
 	}
-}
 
-const handleSubmit = async () => {
 	const baseUrl = window.SETTINGS.api + '/StoreFeedbackAnswer'
 
 	try {
@@ -60,7 +61,7 @@ const handleSubmit = async () => {
 				'Content-Type': 'application/json'
 				// Если требуется авторизация или другие заголовки, добавьте их здесь
 			},
-			body: JSON.stringify(selectedAnswer.value)
+			body: JSON.stringify(bodyData)
 		})
 
 		if (!response.ok) {
@@ -78,6 +79,35 @@ const handleSubmit = async () => {
 		return null
 	}
 }
+
+// const handleSubmit = async () => {
+// 	const baseUrl = window.SETTINGS.api + '/StoreFeedbackAnswer'
+
+// 	try {
+// 		const response = await fetch(baseUrl, {
+// 			method: 'POST',
+// 			headers: {
+// 				'Content-Type': 'application/json'
+// 				// Если требуется авторизация или другие заголовки, добавьте их здесь
+// 			},
+// 			body: JSON.stringify(selectedAnswer.value)
+// 		})
+
+// 		if (!response.ok) {
+// 			throw new Error(`Ошибка HTTP: ${response.status}`)
+// 		}
+
+// 		const data: FeedbackQuestion = await response.json()
+// 		router.push({
+// 			path: '/thanks',
+// 			query: { DeviceId: deviceId.value }
+// 		})
+// 		return data
+// 	} catch (error) {
+// 		console.error('Ошибка при выполнении запроса:', error)
+// 		return null
+// 	}
+// }
 
 onMounted(async () => {
 	await fetchFeedbackQuestion()
@@ -100,12 +130,6 @@ watch(locale, async () => {
 		<div class="answer_container">
 			<button
 				class="answer_button"
-				:class="[
-					{
-						selected: selectedAnswer?.AnswerId === answer.AnswerId,
-						deselected: selectedAnswer?.AnswerId !== answer.AnswerId
-					}
-				]"
 				v-for="(answer, idx) in question?.answers"
 				:key="answer.AnswerId"
 				@click="
@@ -123,13 +147,13 @@ watch(locale, async () => {
 				<div>{{ answer.AnswerText }}</div>
 			</button>
 		</div>
-		<button
+		<!-- <button
 			@click="handleSubmit"
 			class="submit_button"
 			:disabled="!selectedAnswer"
 		>
 			{{ $t('Send') }}
-		</button>
+		</button> -->
 	</div>
 </template>
 
@@ -146,7 +170,7 @@ watch(locale, async () => {
 }
 
 .question {
-	font-size: 1.75rem;
+	font-size: 2.1rem;
 	font-weight: 700;
 	margin-bottom: 1rem;
 }
@@ -158,6 +182,24 @@ watch(locale, async () => {
 }
 
 .answer_button {
+	background: none;
+	border: none;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	border-radius: 0.375rem;
+	padding: 0.5rem 1rem;
+	width: 20rem;
+	height: 20rem;
+	font-weight: 600;
+	transition: all 0.3s ease;
+	font-size: 1.8rem;
+}
+
+.answer_button:active {
+	background: none;
+	border: none;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
